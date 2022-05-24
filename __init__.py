@@ -32,5 +32,5 @@ def setup(bot,storage):
     async def catworm_hug(event):
         # 摸摸猫猫虫
         text = event.message.text
-        if "摸摸猫猫虫" in text or "摸摸貓貓蟲" in text:
-            await event.reply("摸摸喵～")
+        if "摸摸猫猫虫" in text or "摸摸貓貓蟲" in text or "抱抱猫猫虫" in text or "抱抱貓貓蟲" in text:
+            await event.reply("摸摸喵～")·
