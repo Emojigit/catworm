@@ -7,6 +7,7 @@ __description__ = "Catworm by Yan"
 __dname__ = "catworm"
 
 from telethon import events
+from asyncio import sleep
 cats = [
     "CAADBQADOgQAAgGegFYOH_O1Sy_hJgI",
     "CAADBQADcAMAApDLgVac4W-yRc548QI",
@@ -18,4 +19,5 @@ def setup(bot):
         async with bot.action(event.chat, 'sticker') as action:
             for x in cats:
                 await bot.send_file(event.chat,file=x,silent=True)
+            await sleep(0.5) # Wait for the user clients to receive the stickers
         raise events.StopPropagation
