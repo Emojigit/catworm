@@ -16,8 +16,6 @@ cats = [
 def setup(bot):
     @bot.on(events.NewMessage(pattern='/catworm'))
     async def catworm(event):
-        async with bot.action(event.chat, 'sticker') as action:
-            for x in cats:
-                await bot.send_file(event.chat,file=x,silent=True)
-            await sleep(1) # Wait for the user clients to receive the stickers
+        for x in cats:
+            await bot.send_file(event.chat,file=x,silent=True)
         raise events.StopPropagation
