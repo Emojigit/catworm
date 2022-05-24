@@ -33,4 +33,4 @@ def setup(bot,storage):
         # 摸摸猫猫虫
         text = event.message.text
         if "摸摸猫猫虫" in text or "摸摸貓貓蟲" in text or "抱抱猫猫虫" in text or "抱抱貓貓蟲" in text:
-            await event.reply("摸摸喵～")·
+            await event.reply("摸摸喵～")
