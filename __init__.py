@@ -8,14 +8,23 @@ __dname__ = "catworm"
 
 from telethon import events
 from asyncio import sleep
+from time import time
 cats = [
     "CAADBQADOgQAAgGegFYOH_O1Sy_hJgI",
     "CAADBQADcAMAApDLgVac4W-yRc548QI",
     "CAADBQADMQQAAn0ZgFY0TkXJmOwNlwI"
 ]
-def setup(bot):
+def setup(bot,storage):
     @bot.on(events.NewMessage(pattern='/catworm'))
     async def catworm(event):
-        for x in cats:
-            await bot.send_file(event.chat,file=x,silent=True)
+        chatid = event.chat_id
+        last_exec = storage.get("catworm_lastexec_" + str(chatid),0)
+        now = int(time())
+        if now - last_exec < 5:
+            await event.reply("太快了喵，貓貓蟲不喜歡你啊喵！")
+        else:
+            storage.set("catworm_lastexec_" + str(chatid),now,autosave=False)
+            for x in cats:
+                await bot.send_file(event.chat,file=x,silent=True)
+            storage.save()
         raise events.StopPropagation
