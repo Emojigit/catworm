@@ -28,3 +28,9 @@ def setup(bot,storage):
                 await bot.send_file(event.chat,file=x,silent=True)
             storage.save()
         raise events.StopPropagation
+    @bot.on(events.NewMessage())
+    async def catworm_hug(event):
+        # 摸摸猫猫虫
+        text = event.message.text
+        if "摸摸猫猫虫" in text or "摸摸貓貓蟲" in text:
+            await event.reply("摸摸喵～")
